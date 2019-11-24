@@ -1,9 +1,9 @@
 import csv
 import re
 
-def load_csv(file_name,delimiter=",",extension=".csv"):
+def load_csv(file_name,delimiter=","):
     array = []
-    with open(file_name + extension) as csv_file:
+    with open(file_name) as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=delimiter)
         for row in csv_reader:
             row = [row[0],*row[2:5],*row[6:8]]
@@ -32,7 +32,7 @@ def proccess_row_load(row):
         row[3] = row[3][0:20]
 
 def sort_by_value(table, **options):
-    if(options.get("order") == "reversed"):
+    if(options.get("reverse") == True):
         table.sort(key = lambda x: abs(float(x[4].replace(",",".").replace(" ",""))),reverse=True)
     else:
         table.sort(key = lambda x: abs(float(x[4].replace(",",".").replace(" ",""))))
