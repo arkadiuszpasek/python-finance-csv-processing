@@ -3,7 +3,7 @@ import re
 
 def load_csv(file_name,delimiter=","):
     array = []
-    with open(file_name) as csv_file:
+    with open(file_name, encoding="latin2") as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=delimiter)
         for row in csv_reader:
             row = [row[0],*row[2:5],*row[6:8]]
