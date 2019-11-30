@@ -2,7 +2,7 @@ import csv
 
 def load_csv(file_name,delimiter=","):
     array = []
-    with open(file_name) as csv_file:
+    with open(file_name, encoding="latin2") as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=delimiter)
         reading_started = False
         for row in csv_reader:
