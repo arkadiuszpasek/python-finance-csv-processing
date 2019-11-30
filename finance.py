@@ -3,8 +3,12 @@ import re
 import sys
 from components import out
 from components import process_file
+from components import parse_mb
 
 args = {}
+for line in sys.stdin:
+    sys.argv.append(line.strip())
+
 for i in range(1,len(sys.argv)):
     if sys.argv[i].startswith("-"):
         if sys.argv[i][1:] == "file":
@@ -16,7 +20,8 @@ for i in range(1,len(sys.argv)):
 if not "file" in args:
     print("No file specified: use flag -file filename")
 else:
-    arr = process_file.load_csv(args["file"] if args["file"].endswith(".csv") else args["file"] + ".csv",";")
+    arr = parse_mb.load_csv(args["file"] if args["file"].endswith(".csv") else args["file"] + ".csv" , ";")
+    arr = process_file.load_from_array(arr)
     if "sort" in args:
         arr[1:] = process_file.sort_by_value(arr[1:],reverse=args["reverse"])
 
