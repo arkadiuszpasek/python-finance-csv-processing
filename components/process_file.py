@@ -12,6 +12,14 @@ def load_csv(file_name,delimiter=","):
     array[0] = proccess_first_row(array[0])
     return array
 
+def load_from_array(array):
+    ret_array = []
+    for row in array:
+        proccess_row_load(row)
+        ret_array.append(row)
+    array[0] = proccess_first_row(array[0])
+    return ret_array
+
 def proccess_first_row(row):
     return_row = []
     for item in row:
