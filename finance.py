@@ -6,9 +6,6 @@ from components import process_file
 from components import parse_mb
 
 args = {}
-for line in sys.stdin:
-    sys.argv.append(line.strip())
-
 for i in range(1,len(sys.argv)):
     if sys.argv[i].startswith("-"):
         if sys.argv[i][1:] == "file":
